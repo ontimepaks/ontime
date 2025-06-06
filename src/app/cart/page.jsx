@@ -60,31 +60,35 @@ const cart = () => {
             <UserNavbar />
 
 
-            <div className='h-max w-screen overflow-x-hidden p-10 flex flex-wrap justify-center items-center gap-5'>
+            <div className='h-max w-screen overflow-x-hidden p-10 '>
+
+                <div className="h-max w-full text-center">
+
+                    <h3>If order is suddenly removed from your cart then it mean it what not accepted by owner</h3>
+
+                </div>
+                <div className="h-max w-full flex flex-wrap justify-center items-center gap-5 ">
+
+                    {
+                        orderData && orderData?.length >= 1 ?
+
+                            orderData?.map((eachOrderData, index) => {
+                                return (
+                                    <div key={index} className="h-max">
+                                        <OrderCard orderdata={eachOrderData} />
+                                    </div>
+                                )
+
+                            })
 
 
-                <h3>If order is suddenly removed from your cart then it mean it what not accepted by owner</h3>
+                            :
+                            <div className="h-20 w-full flex justify-center items-center text-2xl font-extrabold mt-20">
+                                <h1>No order are found yet</h1>
+                            </div>
+                    }
 
-
-                {
-                    orderData && orderData?.length >= 1 ?
-
-                        orderData?.map((eachOrderData, index) => {
-                            return (
-                                <div key={index} className="h-max">
-                                    <OrderCard orderdata={eachOrderData} />
-                                </div>
-                            )
-
-                        })
-
-
-                        :
-                        <div className="h-20 w-full flex justify-center items-center text-2xl font-extrabold mt-20">
-                            <h1>No order are found yet</h1>
-                        </div>
-                }
-
+                </div>
 
 
             </div>
