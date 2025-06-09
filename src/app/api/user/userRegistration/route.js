@@ -43,7 +43,7 @@ export async function POST(req) {
 
         let existingUser = await userModel.findOne({ $or: [{ phoneNo }, { email }] })
         if (existingUser) {
-            return NextResponse.json({ success: true, reason:"present", msg: "The user on this credential is already present", existingUser })
+            return NextResponse.json({ success: false, reason:"The user is already present", msg: "The user on this credential is already present", existingUser })
         }
 
 

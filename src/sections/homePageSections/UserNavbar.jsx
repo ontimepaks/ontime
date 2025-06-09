@@ -1,5 +1,5 @@
 import { MyContext } from '@/context/context'
-import { useRouter } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import React, { useContext, useEffect } from 'react'
 import 'remixicon/fonts/remixicon.css'
 import { signOut } from 'next-auth/react'
@@ -11,7 +11,7 @@ const UserNavbar = () => {
 
     const route = useRouter()
     let { userData, setUserData, setUserRole } = useContext(MyContext)
-
+    let pathName = usePathname()
 
 
     useEffect(() => {
@@ -50,6 +50,9 @@ const UserNavbar = () => {
 
 
 
+    console.log(pathName)
+
+
 
 
 
@@ -62,25 +65,41 @@ const UserNavbar = () => {
 
             {/* to icon to direct to registration or login */}
             {
-                !userData
-                    ?
+
+                pathName == "cart" ?
+
+
                     <i
-                        onClick={() => { route.push("/registration") }}
-                        className="ri-user-add-line   absolute top-5 right-5 md:right-10 cursor-pointer text-md  md:text-2xl font-bold text-zinc-200"></i>
+                        onClick={() => { route.push("/") }}
+                        className="ri-home-8-line   absolute top-5 right-5 md:right-10 cursor-pointer text-md  md:text-2xl font-bold text-zinc-200"></i>
+
 
                     :
 
-                    <div className="h-max w-max flex gap-3 md:gap-5 absolute top-5 right-3 md:right-10">
+
+
+                    !userData
+                        ?
                         <i
-                            onClick={handleCartIconClick}
-                            className="ri-shopping-cart-line       cursor-pointer text-md  md:text-2xl font-bold text-zinc-200"></i>
+                            onClick={() => { route.push("/registration") }}
+                            className="ri-user-add-line   absolute top-5 right-5 md:right-10 cursor-pointer text-md  md:text-2xl font-bold text-zinc-200"></i>
+
+                        :
+
+                        <div className="h-max w-max flex gap-3 md:gap-5 absolute top-5 right-3 md:right-10">
+                            <i
+                                onClick={handleCartIconClick}
+                                className="ri-shopping-cart-line       cursor-pointer text-md  md:text-2xl font-bold text-zinc-200"></i>
 
 
-                        <i
-                            onClick={() => { handleLogoutIconClick() }}
-                            className="ri-logout-box-r-line    cursor-pointer text-md  sm:text-2xl font-bold text-zinc-200"></i>
+                            <i
+                                onClick={() => { handleLogoutIconClick() }}
+                                className="ri-logout-box-r-line    cursor-pointer text-md  sm:text-2xl font-bold text-zinc-200"></i>
 
-                    </div>
+                        </div>
+
+
+
             }
 
 

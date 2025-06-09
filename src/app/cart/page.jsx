@@ -6,11 +6,32 @@ import axios from 'axios'
 import { useRouter } from 'next/navigation';
 import React, { useContext, useEffect, useState } from 'react'
 
+
+
+
+
+
+
+
+
+
+
 const cart = () => {
+
+
+
     let route = useRouter()
     let { userData } = useContext(MyContext)
     let [orderData, setOrderData] = useState(null)
 
+
+
+
+
+
+
+
+// get the order which is placed by user 
     useEffect(() => {
         try {
 
@@ -25,7 +46,7 @@ const cart = () => {
                     if (response?.data?.success == true) {
                         setOrderData(response?.data?.orderData)
                     } else {
-                        alert("Soemthing went wrong")
+                        alert(response?.data?.msg || response?.data?.reason)
                     }
                 }
 
@@ -62,11 +83,13 @@ const cart = () => {
 
             <div className='h-max w-screen overflow-x-hidden p-10 '>
 
-                <div className="h-max w-full text-center">
 
+                {/* <div className="h-max w-full text-center">
                     <h3>If order is suddenly removed from your cart then it mean it what not accepted by owner</h3>
+                </div> */}
 
-                </div>
+
+
                 <div className="h-max w-full flex flex-wrap justify-center items-center gap-5 ">
 
                     {
@@ -83,9 +106,11 @@ const cart = () => {
 
 
                             :
-                            <div className="h-20 w-full flex justify-center items-center text-2xl font-extrabold mt-20">
-                                <h1>No order are found yet</h1>
+                            <div className="h-max w-full text-center">
+                                <h3>If order is suddenly removed from your cart then it mean it what not accepted by owner</h3>
                             </div>
+
+
                     }
 
                 </div>

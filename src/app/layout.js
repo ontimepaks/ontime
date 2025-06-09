@@ -3,6 +3,7 @@ import "./globals.css";
 import { SessionProvider } from 'next-auth/react'
 import Providers from "./provider";
 import { ContextProvider } from "@/context/context";
+import {Analytics} from '@vercel/analytics/next'
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -74,6 +75,7 @@ export default function RootLayout({ children }) {
         <Providers>
           <ContextProvider>
             {children}
+            <Analytics debug={false}  />
           </ContextProvider>
         </Providers>
       </body>

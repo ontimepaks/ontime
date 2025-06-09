@@ -197,7 +197,7 @@ const ServiceCard = ({ servicedata }) => {
       </div>
 
       <h3 className='font-bold text-xl mt-5'>{servicedata.name}</h3>
-      <p className='font-normal text-sm mt-2 text-wrap'>{servicedata.desc}</p>
+      <p className='h-10 overflow-hidden font-normal text-sm mt-2 text-wrap'>{servicedata.desc}</p>
 
 
       {/* the button  */}
