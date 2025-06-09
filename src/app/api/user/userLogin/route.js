@@ -19,16 +19,20 @@ export async function POST(req) {
 
         let body = await req.json();
 
-        let { email, password, role } = body;
+        let { email, password, role, authProvider } = body;
 
         if (
             email == "" ||
-            password == "" ||
             role == "" ||
             !email ||
-            !password ||
-            !role) {
+            !role ||
+            !authProvider) {
             return NextResponse.json({ success: false, reason: "All fields are required" })
+        }
+
+
+        if (authProvider == "local" && !password && password == "") {
+            return NextResponse.json({ success: false, reason: "The password is required" })
         }
 
 

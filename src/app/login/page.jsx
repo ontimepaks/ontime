@@ -62,15 +62,23 @@ const login = () => {
       async function googleAuth() {
         try {
 
-          let formDataToGoogleSend = {
-            name: userData?.name,
-            email: userData?.email,
-            image: userData?.image,
-            role: userRole,
-            authProvider: "google"
+          // let formDataToGoogleSend = {
+          //   name: userData?.name,
+          //   email: userData?.email,
+          //   image: userData?.image,
+          //   role: userRole,
+          //   authProvider: "google"
+          // }
+
+
+          let formDataToGoogleSend={
+            email:userData?.email,
+            role:userRole.current,
+            authProvider:"google"
           }
 
-          let response = await axios.post("/api/user/userRegistration", formDataToGoogleSend)
+
+          let response = await axios.post("/api/user/userLogin", formDataToGoogleSend)
 
           // console.log(response?.data)
 

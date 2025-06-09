@@ -27,6 +27,8 @@ export default function Registration() {
     userData
   } = useContext(MyContext)
 
+  let [googleAuthSignInBtnClicked, setGoogleAuthSignInBtnClicked] = useState(false)
+let googleAuthSignInBtnClickedRef= useRef(false)
 
 
   const userRole = useRef("user")
@@ -59,15 +61,18 @@ export default function Registration() {
 
     // console.log(userData)
 
-    console.log("Entered in google auth session in registration")
+    // console.log("Entered in google auth session in registration")
 
-    if (session && status == "authenticated") {
+    if (session && status == "authenticated" && googleAuthSignInBtnClickedRef.current == true) {
 
-      console.log("Entered in session condition")
+      // console.log("Entered in session condition")
+
+
+
       async function googleAuth() {
         try {
 
-          console.log("entered in googleAuth function")
+          // console.log("entered in googleAuth function")
 
           let formDataToGoogleSend = {
             name: userData?.name,
@@ -98,7 +103,7 @@ export default function Registration() {
 
           } else {
             alert(response?.data?.reason || response?.data?.msg)
-            throw new Error("Google auth is failed")
+            // throw new Error("Google auth is failed")
           }
 
         } catch (error) {
@@ -106,6 +111,8 @@ export default function Registration() {
         }
       }
       googleAuth()
+
+      googleAuthSignInBtnClickedRef.current==false
 
 
     }
@@ -455,9 +462,13 @@ export default function Registration() {
 
 
               <button
-                onClick={() => signIn("google", {
-                  callbackUrl: `${window.location.origin}/registration`
-                })}
+                onClick={() => {
+                  signIn("google", {
+                    callbackUrl: `${window.location.origin}/registration`
+                  });
+                  googleAuthSignInBtnClickedRef.current==true
+                  googleAuthSignInBtnClicked(true)
+                }}
                 className="w-full flex items-center justify-center gap-5 py-2 border border-gray-300 rounded-lg hover:bg-gray-100 transition"
               >
                 <i className="ri-google-fill     text-2xl "></i>
