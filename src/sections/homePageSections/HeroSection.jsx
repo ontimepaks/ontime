@@ -84,7 +84,7 @@ const HeroSection = () => {
     return (
         <div
             id='home'
-            className="h-max w-full relative mt-5  sm:h-max  overflow-hidden">
+            className="h-max w-full relative mt-5  sm:h-max  overflow-hidden bg-zinc-50">
 
 
 

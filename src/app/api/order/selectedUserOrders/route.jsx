@@ -10,11 +10,11 @@ export async function POST(request) {
     try {
 
         await dbConnection()
-        let body=await request.json()
+        let body = await request.json()
 
-        let {userId}=body;
+        let { userId } = body;
 
-        let allOrders = await orderModel.find({userId}).populate("serviceId").populate("userId")
+        let allOrders = await orderModel.find({ userId }).populate("serviceId").populate("userId")
 
         if (!allOrders || allOrders?.length < 1) {
             return NextResponse.json({ success: false, reason: "No orders are present" })
@@ -23,15 +23,17 @@ export async function POST(request) {
 
         let orderData = allOrders?.map((eachOrder) => {
             return (
-                {   _id:eachOrder._id,
+                {
+                    _id: eachOrder._id,
                     serviceName: eachOrder?.serviceId?.name,
+                    serviceImg: eachOrder?.serviceId?.imgUrl,
                     username: eachOrder?.userProvidedName,
                     catag: eachOrder?.serviceId?.catag,
                     email: eachOrder?.email,
-                    phoneNo:eachOrder?.phoneNo,
+                    phoneNo: eachOrder?.phoneNo,
                     price: eachOrder?.serviceId?.price,
-                    orderStatus:eachOrder?.orderStatus,
-                    cart:true
+                    orderStatus: eachOrder?.orderStatus,
+                    cart: true
                 }
             )
         })

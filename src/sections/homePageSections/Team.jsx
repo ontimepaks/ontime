@@ -71,16 +71,16 @@ const Team = () => {
   return (
     <div
     id='team'
-    className='h-max w-full overflow-x-hidden p-10 mt-20'>
+    className='h-max w-full overflow-x-hidden p-10 mt-20 bg-zinc-50'>
 
     <div className="h-max w-full">
-        <h1 className='h-max w-full text-4xl md:text-5xl text-zinc-800 font-extrabold text-center md:text-start'>Team</h1>
+        <h1 className='h-max w-full text-4xl text-zinc-800 font-bold text-center'><span className='text-red-600'>Our </span>Team</h1>
     </div>
 
 
 
 
-            <div className="h-max w-full flex justify-center lg:justify-start flex-wrap gap-5 mt-10">
+            <div className="h-max w-full flex justify-center flex-wrap gap-5 mt-10">
                 {
                     allMembersData?.map((eachMember, index) => {
                         return (

@@ -107,7 +107,7 @@ const cart = () => {
 
                             :
                             <div className="h-max w-full text-center">
-                                <h3>If order is suddenly removed from your cart then it mean it what not accepted by owner</h3>
+                                <h3><span className='text-red-500 font-bold text-lg mr-4'>Note:</span>If order is suddenly removed from your cart then it mean it what not accepted by owner</h3>
                             </div>
 
 

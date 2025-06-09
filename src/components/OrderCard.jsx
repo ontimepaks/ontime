@@ -1,6 +1,15 @@
 import { MyContext } from '@/context/context'
 import axios from 'axios'
 import React, { useContext } from 'react'
+import Image from 'next/image'
+
+
+
+
+
+
+
+
 
 const OrderCard = ({ orderdata }) => {
 
@@ -57,41 +66,52 @@ const OrderCard = ({ orderdata }) => {
 
 
   return (
-    <div className=" w-max border-2 border-zinc-500 shadow-md shadow-zinc-600 bg-white rounded-xl p-6 mb-4 ">
+    <div className=" h-max w-max border-2 border-zinc-500 shadow-md shadow-zinc-600 bg-white rounded-xl p-6 mb-4 ">
       {/* Order Info */}
-      <h2 className=" text-indigo-600  text-3xl mb-5 font-extrabold text-center">{orderdata?.serviceName}</h2>
-      <p className="text-gray-800"><span className="font-semibold">Name:</span> {orderdata?.username}</p>
-      <p className="text-gray-800"><span className="font-semibold">Phone:</span> {orderdata?.phoneNo}</p>
-      <p className="text-gray-800"><span className="font-semibold">Email:</span> {orderdata?.email}</p>
-      <p className="text-gray-800"><span className="font-semibold">Price:</span> {orderdata?.price} PKR</p>
 
-  
-  
-     {
-      orderdata?.cart!==true?
-      <div className="w-60 flex gap-5">
-      <button
-        onClick={() => { handleDeleteBtnClick(orderdata) }}
-        className="flex-1 mt-4 px-2 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition flex justify-center">
-        cancel
-      </button>
+      <div className="h-48 w-full  overflow-hidden flex justify-center items-center">
+        <Image
+          src={orderdata?.serviceImg}
+          height={200}
+          width={200}
+          alt='ordered service img'
+          className='object-cover '
+        />
+      </div>
+
+      <h2 className=" text-indigo-600  text-2xl mb-2 mt-2 font-extrabold ">{orderdata?.serviceName}</h2>
+      <p className="text-gray-800 text-sm"><span className="font-semibold">Name:</span> {orderdata?.username}</p>
+      <p className="text-gray-800 text-sm"><span className="font-semibold">Phone:</span> {orderdata?.phoneNo}</p>
+      <p className="text-gray-800 text-sm"><span className="font-semibold">Email:</span> {orderdata?.email}</p>
+      <p className="text-gray-800 text-sm"><span className="font-semibold">Price:</span> {orderdata?.price} PKR</p>
+
+
+
       {
-        orderdata?.orderStatus == "pending" ?
-          <button
-            onClick={() => { handleCompletedBtnClick(orderdata) }}
-            className="flex-1 mt-4 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition flex justify-center">
-            complete
-          </button>
+        orderdata?.cart !== true ?
+          <div className="w-full flex gap-2">
+            <button
+              onClick={() => { handleDeleteBtnClick(orderdata) }}
+              className="flex-1 mt-4 px-2 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition flex justify-center items-center">
+              <i class="ri-delete-bin-line    text-lg"></i>
+            </button>
+            {
+              orderdata?.orderStatus == "pending" ?
+                <button
+                  onClick={() => { handleCompletedBtnClick(orderdata) }}
+                  className=" flex-1 mt-4 px-4 py-1 bg-green-600 text-white rounded hover:bg-green-700 transition flex justify-center items-center">
+                  <i className="ri-checkbox-circle-line   text-xl"></i>
+                </button>
+                :
+                null
+            }
+          </div>
+
           :
+
+
           null
       }
-    </div>
-
-    :
-    
-    
-    null
-     }
 
 
 

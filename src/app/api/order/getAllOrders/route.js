@@ -21,6 +21,7 @@ export async function GET(request) {
         let allOrdersArray = allOrders?.map((eachOrder) => {
             return (
                 {   _id:eachOrder._id,
+                    serviceImg:eachOrder?.serviceId?.imgUrl,
                     serviceName: eachOrder?.serviceId?.name,
                     username: eachOrder?.userProvidedName,
                     catag: eachOrder?.serviceId?.catag,
