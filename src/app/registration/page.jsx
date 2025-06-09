@@ -27,8 +27,7 @@ export default function Registration() {
     userData
   } = useContext(MyContext)
 
-  let [googleAuthSignInBtnClicked, setGoogleAuthSignInBtnClicked] = useState(false)
-let googleAuthSignInBtnClickedRef= useRef(false)
+  let googleAuthSignInBtnClickedRef = useRef(false)
 
 
   const userRole = useRef("user")
@@ -58,21 +57,13 @@ let googleAuthSignInBtnClickedRef= useRef(false)
   useEffect(() => {
 
     let userData = session?.user
-
-    // console.log(userData)
-
-    // console.log("Entered in google auth session in registration")
-
-    if (session && status == "authenticated" && googleAuthSignInBtnClickedRef.current == true) {
-
-      // console.log("Entered in session condition")
-
+console.log(googleAuthSignInBtnClickedRef.current)
+    if (session && status == "authenticated" ) {
 
 
       async function googleAuth() {
         try {
 
-          // console.log("entered in googleAuth function")
 
           let formDataToGoogleSend = {
             name: userData?.name,
@@ -84,6 +75,7 @@ let googleAuthSignInBtnClickedRef= useRef(false)
 
           let response = await axios.post("/api/user/userRegistration", formDataToGoogleSend)
 
+          googleAuthSignInBtnClickedRef.current==false
           console.log(response?.data)
 
           if (response?.data?.success == true) {
@@ -97,22 +89,18 @@ let googleAuthSignInBtnClickedRef= useRef(false)
             }
 
             localStorage.setItem("ontimeUserData", JSON.stringify(response?.data?.existingUser || response?.data?.createdUser))
-            // console.log("The user is successfully authenticated with google", response.data.createdUser, response.data.existingUser)
             setUserData(response?.data?.createdUser || response?.data?.existingUser)
-            // console.log(userRole)
 
           } else {
             alert(response?.data?.reason || response?.data?.msg)
-            // throw new Error("Google auth is failed")
           }
 
         } catch (error) {
-          // console.log("error from google auth in registration", error)
+          console.log("error from google auth in registration", error)
         }
       }
       googleAuth()
 
-      googleAuthSignInBtnClickedRef.current==false
 
 
     }
@@ -466,8 +454,7 @@ let googleAuthSignInBtnClickedRef= useRef(false)
                   signIn("google", {
                     callbackUrl: `${window.location.origin}/registration`
                   });
-                  googleAuthSignInBtnClickedRef.current==true
-                  googleAuthSignInBtnClicked(true)
+                  googleAuthSignInBtnClickedRef.current == true
                 }}
                 className="w-full flex items-center justify-center gap-5 py-2 border border-gray-300 rounded-lg hover:bg-gray-100 transition"
               >

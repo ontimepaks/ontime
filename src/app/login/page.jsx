@@ -80,7 +80,7 @@ const login = () => {
 
           let response = await axios.post("/api/user/userLogin", formDataToGoogleSend)
 
-          // console.log(response?.data)
+          console.log(response?.data)
 
           if (response?.data?.success == true) {
             localStorage.setItem("ontimeUserData", JSON.stringify(response?.data?.existingUser || response?.data?.createdUser))
@@ -92,7 +92,7 @@ const login = () => {
           }
 
         } catch (error) {
-          // console.log("error from google auth in registration", error)
+          console.log("error from google auth in registration", error)
         }
       }
       googleAuth()
