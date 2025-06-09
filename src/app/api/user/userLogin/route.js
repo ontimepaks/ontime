@@ -43,15 +43,10 @@ export async function POST(req) {
 
 
 
-        if (existingUser.password !== password) {
+        if (authProvider == "local" && existingUser.password !== password) {
             return NextResponse.json({ success: false, reason: "Credential are not correct" })
         }
 
-
-        // let token = jwtTokenCreater(existingUser?._id)
-        // if (!token) {
-        //     return NextResponse.json({ success: false, reason: "Something went in wrong in creating token" })
-        // }
 
 
         return NextResponse.json({ success: true, msg: "The user is successfully Logged In ", existingUser })

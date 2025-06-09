@@ -83,6 +83,16 @@ const login = () => {
           console.log(response?.data)
 
           if (response?.data?.success == true) {
+
+
+            if (userRole.current == "user") {
+              console.log("enter in home", userRole)
+              route.push("/")
+            } else if (userRole.current == "admin") {
+              route.push("/adminHome")
+            }
+
+
             localStorage.setItem("ontimeUserData", JSON.stringify(response?.data?.existingUser || response?.data?.createdUser))
             // console.log("The user is successfully authenticated with google", response.data.existingUser)
             setUserData(response?.data?.createdUser || response?.data?.existingUser)
