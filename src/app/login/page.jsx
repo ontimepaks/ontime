@@ -79,6 +79,7 @@ const login = () => {
             // console.log("The user is successfully authenticated with google", response.data.existingUser)
             setUserData(response?.data?.createdUser || response?.data?.existingUser)
           } else {
+            alert(response?.data?.reason || response?.data?.msg)
             throw new Error("Google auth is failed")
           }
 

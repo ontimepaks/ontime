@@ -177,6 +177,7 @@ export default function ContactPage() {
         setStatus('Sending…');
         try {
             let response = await axios.post('/api/user/emailContact', formData);
+            console.log(response.data)
             if (response?.data?.success == true) {
                 setStatus('Message sent!');
                 setFormData({ username: '', userEmail: '', userMsg: '' });
@@ -199,6 +200,24 @@ export default function ContactPage() {
 
 
 
+    function handlePhoneNoClick() {
+        window.location.href = "tel:+923161325007"
+    }
+
+
+
+
+    function handleEmailClick() {
+        window.location.href = "mailto:ontimepaks@gmail.com"
+    }
+
+
+
+    function handleWhatsAppChatClick() {
+        let phoneNo = encodeURIComponent("+923161325007")
+        let defaultTextMsg = encodeURIComponent("Hello, I found your contact from your website. Would you like to talk to me@")
+        window.location.href = `https://wa.me/${phoneNo}?text=${defaultTextMsg}`
+    }
 
 
 
@@ -207,7 +226,9 @@ export default function ContactPage() {
 
 
     return (
-        <main className="min-h-screen bg-gray-50 flex flex-col items-center justify-center p-6 mt-20">
+        <main
+            id='contact'
+            className="min-h-screen bg-gray-50 flex flex-col items-center justify-center p-6 mt-20">
 
             <h2 className="text-4xl mb-10 font-semibold text-center md:text-left ">
                 CONTACT <span className="text-red-600">US</span>
@@ -286,16 +307,25 @@ export default function ContactPage() {
                         </div>
                     </div>
 
-                    <div className="flex items-center space-x-3">
+                    <div
+                        onClick={handlePhoneNoClick}
+                        className="flex items-center space-x-3">
                         <i className="ri-phone-fill text-red-500"></i>
                         <span className="text-gray-800  cursor-pointer">+92 316 1325007</span>
                     </div>
 
-                    <div className="flex items-center space-x-3">
+                    <div
+                        onClick={handleEmailClick}
+                        className="flex items-center space-x-3">
                         <i className="ri-mail-line text-red-500"></i>
                         <span className="text-gray-800 cursor-pointer">ontimepaks@gmail.com</span>
                     </div>
-
+                    <div
+                        onClick={handleWhatsAppChatClick}
+                        className="flex items-center space-x-3">
+                        <i className="ri-whatsapp-line text-red-500"></i>
+                        <span className="text-gray-800 cursor-pointer">ontimepaks@gmail.com</span>
+                    </div>
 
                 </div>
 

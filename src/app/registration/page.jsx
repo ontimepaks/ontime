@@ -97,6 +97,7 @@ export default function Registration() {
             // console.log(userRole)
 
           } else {
+            alert(response?.data?.reason || response?.data?.msg)
             throw new Error("Google auth is failed")
           }
 

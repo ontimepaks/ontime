@@ -65,7 +65,7 @@ const Services = () => {
 
 
 
-            <div className="h-max w-full flex justify-center lg:justify-start flex-wrap gap-5 mt-10">
+            <div className="h-max w-full flex justify-center  flex-wrap gap-5 mt-10">
                 {
                     allServicesData?.map((eachService, index) => {
                         if (servicesFilterVal == "All" || eachService?.catag == servicesFilterVal) {
