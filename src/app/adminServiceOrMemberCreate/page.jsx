@@ -314,6 +314,10 @@ const AdminCreateForm = () => {
                 <option value="businessAutomation">Business Automation</option>
                 <option value="photographyAndVideoGraphy">Photography And Videography</option>
                 <option value="trandingAndCourses">Training And Courses</option>
+                <option value="artificialInteligenceServices">Artificial Intelligence Services</option>
+                <option value="consultingServices">Consulting Services</option>
+                <option value="accountingSoftwareIntegration">Accounting Software Integration</option>
+                <option value="instituteAndInternship">Institute & Internship</option>
               </select>
             </div>
 

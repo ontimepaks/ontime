@@ -71,7 +71,7 @@ const OrderCard = ({ orderdata }) => {
 
       <div className="h-48 w-full  overflow-hidden flex justify-center items-center">
         <Image
-          src={orderdata?.serviceImg}
+          src={orderdata?.serviceImg? orderdata?.serviceImg:null}
           height={200}
           width={200}
           alt='ordered service img'
@@ -93,7 +93,7 @@ const OrderCard = ({ orderdata }) => {
             <button
               onClick={() => { handleDeleteBtnClick(orderdata) }}
               className="flex-1 mt-4 px-2 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition flex justify-center items-center">
-              <i class="ri-delete-bin-line    text-lg"></i>
+              <i className="ri-delete-bin-line    text-lg"></i>
             </button>
             {
               orderdata?.orderStatus == "pending" ?

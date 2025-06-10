@@ -340,6 +340,7 @@ const login = () => {
                 onClick={() => signIn("google")}
                 className="w-full flex items-center justify-center py-2 border border-gray-300 rounded-lg hover:bg-gray-100 transition"
               >
+                <i className="ri-google-fill     text-2xl "></i>
                 Login with Google
               </button>
 

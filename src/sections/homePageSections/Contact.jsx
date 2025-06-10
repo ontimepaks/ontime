@@ -158,6 +158,97 @@ export default function ContactPage() {
 
 
 
+    const onlineContactArray = [
+
+        {
+            iconClass: "ri-twitter-fill",
+            name: "twitter",
+            iconColor: "#1DA1F2",
+            directingUrl: "https://twitter.com/ontimeaa"
+        },
+        {
+            iconClass: "ri-facebook-fill",
+            name: "facebook",
+            iconColor: "#1877F2",
+            directingUrl: "https://www.facebook.com/ontimeaa"
+        },
+        {
+            iconClass: "ri-instagram-fill",
+            name: "instagram",
+            iconColor: "#E1306C",
+            directingUrl: "https://www.instagram.com/ontimeaa/"
+        },
+        {
+            iconClass: "ri-tiktok-line",
+            name: "tiktok",
+            iconColor: "#000000",
+            directingUrl: "https://www.tiktok.com/@ontimeaa"
+        },
+        {
+            iconClass: "ri-youtube-fill",
+            name: "youtube",
+            iconColor: "#FF0000",
+            directingUrl: "https://www.youtube.com/channel/UCmTomDF3Hoae35Ba3PEqTTw"
+        },
+        {
+            iconClass: "ri-pinterest-fill",
+            name: "pinterest",
+            iconColor: "#E60023",
+            directingUrl: "https://www.pinterest.com/ontimeaa/"
+        },
+        {
+            iconClass: "ri-linkedin-fill",
+            name: "linkedin",
+            iconColor: "#0077B5",
+            directingUrl: "https://www.linkedin.com/in/ontimeaa/"
+        },
+        {
+            iconClass: "ri-patreon-fill",
+            name: "patreon",
+            iconColor: "#F96854",
+            directingUrl: "https://www.patreon.com/ontimeaa"
+        },
+        {
+            iconClass: "ri-twitch-fill",
+            name: "twitch",
+            iconColor: "#9146FF",
+            directingUrl: "https://www.twitch.tv/ontimeaa"
+        },
+        {
+            iconClass: "ri-reddit-fill",
+            name: "reddit",
+            iconColor: "#FF4500",
+            directingUrl: "https://www.reddit.com/user/ontimeaa/"
+        },
+        {
+            iconClass: "ri-skype-fill",
+            name: "skype",
+            iconColor: "#00AFF0",
+            directingUrl: "https://join.skype.com/invite/sChLGGp8GkEp"
+        },
+        {
+            iconClass: "ri-telegram-fill",
+            name: "telegram",
+            iconColor: "#0088CC",
+            directingUrl: "https://www.telegram.org/ontimeaa"
+        },
+        {
+            iconClass: "ri-discord-fill",
+            name: "discord",
+            iconColor: "#5865F2",
+            directingUrl: "https://discord.gg/SYeQ2tjp"
+        },
+        {
+            iconClass: "ri-snapchat-fill",
+            name: "snapchat",
+            iconColor: "#FFFC00",
+            directingUrl: "#"
+        },
+
+
+    ];
+
+
 
 
 
@@ -219,6 +310,17 @@ export default function ContactPage() {
         window.location.href = `https://wa.me/${phoneNo}?text=${defaultTextMsg}`
     }
 
+
+
+   function openLocationInMap() {
+    const lat = 24.85364369546579;
+    const lon = 67.01224482227269;
+        // bingmaps URI that asks for directions from “here” (~) to the target coords
+        //   const uri = `bingmaps:?rtp=~pos.${lat}_${lon}_Destination`
+        // navigate there (will open Maps app on Windows)
+        const uri="https://maps.app.goo.gl/8j1j1WUGkvnopcow8"
+        window.open(uri, "_blank")
+      };
 
 
 
@@ -302,8 +404,8 @@ export default function ContactPage() {
                 <div className="space-y-2 flex flex-col items-center md:items-start justify-center md:justify-start py-5 text-center md:text-start ">
                     <div className="flex items-start space-x-3">
                         <div>
-                            Parasram Building, Pakistan Chowk, next to desi Tarka, New Chali, Karachi, Sindh 74200, Pakistan
-                            <span className=' ml-2 text-red-500 text-sm cursor-pointer'>see on map</span>
+                            Ontime printers,Parasram Building, Pakistan Chowk, next to desi Tarka, New Chali, Karachi, Sindh 74200, Pakistan
+                            <span onClick={openLocationInMap} className=' ml-2 text-red-500 text-sm cursor-pointer'>see on map</span>
                         </div>
                     </div>
 
@@ -315,18 +417,20 @@ export default function ContactPage() {
                     </div>
 
                     <div
+                        onClick={handleWhatsAppChatClick}
+                        className="flex items-center space-x-3">
+                        <i className="ri-whatsapp-line text-red-500"></i>
+                        <span className="text-gray-800 cursor-pointer">+92 316 1325007</span>
+                    </div>
+
+
+                    <div
                         onClick={handleEmailClick}
                         className="flex items-center space-x-3">
                         <i className="ri-mail-line text-red-500"></i>
                         <span className="text-gray-800 cursor-pointer">ontimepaks@gmail.com</span>
                     </div>
-                    <div
-                        onClick={handleWhatsAppChatClick}
-                        className="flex items-center space-x-3">
-                        <i className="ri-whatsapp-line text-red-500"></i>
-                        <span className="text-gray-800 cursor-pointer">ontimepaks@gmail.com</span>
-                    </div>
-
+                 
                 </div>
 
 
@@ -338,6 +442,23 @@ export default function ContactPage() {
 
             </div>
 
+
+
+            {/* social links */}
+            <div className="flex gap-5 mt-10">
+                {
+                    onlineContactArray?.map((eachContact, index) => {
+                        return (
+                            <div
+                                onClick={() => { window.open(eachContact.directingUrl) }}
+                                key={index}>
+                                <i className={`${eachContact.iconClass} text-2xl cursor-pointer`}
+                                    style={{ color: eachContact.iconColor }}></i>
+                            </div>
+                        )
+                    })
+                }
+            </div>
 
 
 

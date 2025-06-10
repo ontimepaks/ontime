@@ -12,7 +12,7 @@ const AdminCreation = () => {
         <div>
 
 
-<div className="">
+            <div className="">
                 <i className="ri-add-circle-line   "></i>
 
                 <div className="">
