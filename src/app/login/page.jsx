@@ -172,7 +172,7 @@ const login = () => {
           route.push("/adminHome")
         }
       } else {
-        alert("Somethings went wrong.Try again")
+        alert(response?.data?.reason || response?.data?.msg || "Something went wrong. Please try again")
       }
 
 

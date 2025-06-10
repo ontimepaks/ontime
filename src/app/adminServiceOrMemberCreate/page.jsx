@@ -93,7 +93,7 @@ const AdminCreateForm = () => {
           setCurrentAdminNav("members")
           // console.log(response.data)
         } else {
-          alert("THe req to create member is failed")
+          alert(response?.data?.reason || response?.data?.msg || "something went wrong")
         }
       }
       else if (mode == "service") {
@@ -102,7 +102,7 @@ const AdminCreateForm = () => {
           route.push("/adminHome")
           setCurrentAdminNav("members")
         } else {
-          alert("THe req to create service is failed")
+          alert(response?.data?.reason || response?.data?.msg || "something went wrong. please try again with non zero price")
         }
       }
 

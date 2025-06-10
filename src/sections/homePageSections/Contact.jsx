@@ -138,7 +138,7 @@
 
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 
@@ -155,6 +155,7 @@ export default function ContactPage() {
         userMsg: '',
     });
     const [status, setStatus] = useState('');
+    const [userLength, setUserLength] = useState(0)
 
 
 
@@ -288,6 +289,23 @@ export default function ContactPage() {
 
 
 
+    useEffect(() => {
+        async function getAllUserLength() {
+            try {
+                let response = await axios.get("/api/user/getAllUserLength")
+                console.log(response.data)
+                if (response?.data?.success) {
+                    setUserLength(response?.data?.userLength)
+                }
+            } catch (error) {
+                console.log(error)
+            }
+        }
+
+        getAllUserLength()
+    }, [])
+
+
 
 
 
@@ -312,15 +330,15 @@ export default function ContactPage() {
 
 
 
-   function openLocationInMap() {
-    const lat = 24.85364369546579;
-    const lon = 67.01224482227269;
+    function openLocationInMap() {
+        const lat = 24.85364369546579;
+        const lon = 67.01224482227269;
         // bingmaps URI that asks for directions from “here” (~) to the target coords
         //   const uri = `bingmaps:?rtp=~pos.${lat}_${lon}_Destination`
         // navigate there (will open Maps app on Windows)
-        const uri="https://maps.app.goo.gl/8j1j1WUGkvnopcow8"
+        const uri = "https://maps.app.goo.gl/8j1j1WUGkvnopcow8"
         window.open(uri, "_blank")
-      };
+    };
 
 
 
@@ -328,16 +346,20 @@ export default function ContactPage() {
 
 
     return (
+        // main container
         <main
             id='contact'
             className="min-h-screen bg-gray-50 flex flex-col items-center justify-center p-6 mt-20">
 
+
+
+            {/* Heading */}
             <h2 className="text-4xl mb-10 font-semibold text-center md:text-left ">
                 CONTACT <span className="text-red-600">US</span>
             </h2>
 
 
-
+            {/* form and address+links container */}
             <div className="max-w-5xl w-full  shadow rounded-lg p-8 flex flex-col-reverse lg:flex-row lg:justify-between gap-10">
 
 
@@ -430,7 +452,7 @@ export default function ContactPage() {
                         <i className="ri-mail-line text-red-500"></i>
                         <span className="text-gray-800 cursor-pointer">ontimepaks@gmail.com</span>
                     </div>
-                 
+
                 </div>
 
 
@@ -444,8 +466,12 @@ export default function ContactPage() {
 
 
 
+
+
+
+
             {/* social links */}
-            <div className="flex gap-5 mt-10">
+            <div className="flex gap-5 mt-10 flex-wrap">
                 {
                     onlineContactArray?.map((eachContact, index) => {
                         return (
@@ -458,6 +484,47 @@ export default function ContactPage() {
                         )
                     })
                 }
+            </div>
+
+
+
+
+
+
+
+            {/* Visitor counter */}
+            <div className="mt-20 font-bold text-2xl text-red-500 flex flex-col items-center ">
+
+                <div className="text-2xl mb-2 font-semibold">
+                    Registered Users
+                </div>
+
+                <div className="flex gap-1">
+
+                    <div className="h-10 w-10 flex justify-center items-center from-zinc-200 to-zinc-950 rounded-md">
+                        0
+                    </div>
+                    <div className="h-10 w-10 flex justify-center items-center bg-amber-200 rounded-md">
+                        0
+                    </div>
+                    <div className="h-10 w-10 flex justify-center items-center bg-amber-200 rounded-md">
+                        0
+                    </div>
+
+
+                    {
+                        userLength.toString().split("").map((eachLetter, index) => {
+
+                            return (
+                                <div key={index} className="h-10 w-10 flex justify-center items-center bg-amber-200 rounded-md">
+                                    {eachLetter}
+                                </div>
+                            )
+                        })
+                    }
+
+                </div>
+                {/* Registered User: <span className='text-zinc-700 font-semibold ml-4 text-xl'>{userLength.toString()}</span> */}
             </div>
 
 
