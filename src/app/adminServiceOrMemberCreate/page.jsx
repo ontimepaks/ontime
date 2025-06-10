@@ -24,7 +24,7 @@ const AdminCreateForm = () => {
     desc: '',
     price: '',
     contact: "",
-    catag: ""
+    catag: "graphicDesginAndBranding"
   });
 
 
