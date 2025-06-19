@@ -33,7 +33,6 @@ export default async function dbConnection() {
 
         if (!connectionPromise) {
             connectionPromise = await mongoose.connect(`${mongodb_uri}`,{
-                dbName:"ontime",
                 serverSelectionTimeoutMS:30000
             });
             connection = await connectionPromise;

@@ -126,7 +126,7 @@ const   TeamCard = ({ teamdata }) => {
       </div>
 
       <h3 className='font-bold text-xl mt-5'>{teamdata.name}</h3>
-      <p className=' h-max w-52 font-normal text-[14px] text-wrap mt-2'>{teamdata.desc} lakjdlfkaj lakjdlfjk lkajsdf </p>
+      <p className=' h-max w-52 font-normal text-[14px] text-wrap mt-2'>{teamdata.desc} </p>
 
 
 

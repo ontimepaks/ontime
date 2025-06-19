@@ -69,7 +69,7 @@ const Home = () => {
       async function getAllServicesData() {
 
         let response = await axios.get("/api/services/getAllServices")
-        // console.log(response.data)
+        console.log(response.data)
 
         if (response?.data?.success == true) {
           setAllServicesData(response?.data?.allServices)
@@ -99,7 +99,7 @@ const Home = () => {
       async function getAllMembersData() {
 
         let response = await axios.get("/api/member/getMembers")
-        // console.log(response.data)
+        console.log(response.data)
 
         if (response?.data?.success == true) {
           setAllMembersData(response?.data?.allMembers)

@@ -519,6 +519,8 @@ export default function ContactPage() {
 
 
                     {
+                        typeof userCounter=="number"
+                        ?
                         userCounter.toString().split("").map((eachLetter, index) => {
 
                             return (
@@ -527,6 +529,8 @@ export default function ContactPage() {
                                 </div>
                             )
                         })
+                        :
+                        null
                     }
 
                 </div>
