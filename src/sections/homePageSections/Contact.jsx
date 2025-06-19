@@ -156,6 +156,12 @@ export default function ContactPage() {
     });
     const [status, setStatus] = useState('');
     const [userLength, setUserLength] = useState(0)
+    let [userCounter, setUserCounter]= useState(0)
+
+
+
+
+
 
 
 
@@ -292,10 +298,10 @@ export default function ContactPage() {
     useEffect(() => {
         async function getAllUserLength() {
             try {
-                let response = await axios.get("/api/user/getAllUserLength")
+                let response = await axios.get("/api/user/userViewCounter")
                 console.log(response.data)
                 if (response?.data?.success) {
-                    setUserLength(response?.data?.userLength)
+                    setUserCounter(response?.data?.userCounterLength)
                 }
             } catch (error) {
                 console.log(error)
@@ -496,27 +502,27 @@ export default function ContactPage() {
             <div className="mt-20 font-bold text-2xl text-red-500 flex flex-col items-center ">
 
                 <div className="text-2xl mb-2 font-semibold">
-                    Registered Users
+                    Visited Users
                 </div>
 
                 <div className="flex gap-1">
 
-                    <div className="h-10 w-10 flex justify-center items-center from-zinc-200 to-zinc-950 rounded-md">
+                    <div className="h-10 w-10 flex justify-center items-center f bg-gradient-to-t from-zinc-300 to-zinc-100  rounded-md">
                         0
                     </div>
-                    <div className="h-10 w-10 flex justify-center items-center bg-amber-200 rounded-md">
+                    <div className="h-10 w-10 flex justify-center items-center  bg-gradient-to-t from-zinc-300 to-zinc-100 rounded-md">
                         0
                     </div>
-                    <div className="h-10 w-10 flex justify-center items-center bg-amber-200 rounded-md">
+                    <div className="h-10 w-10 flex justify-center items-center  bg-gradient-to-t from-zinc-300 to-zinc-100 rounded-md">
                         0
                     </div>
 
 
                     {
-                        userLength.toString().split("").map((eachLetter, index) => {
+                        userCounter.toString().split("").map((eachLetter, index) => {
 
                             return (
-                                <div key={index} className="h-10 w-10 flex justify-center items-center bg-amber-200 rounded-md">
+                                <div key={index} className="h-10 w-10 flex justify-center items-center bg-gradient-to-t from-zinc-300 to-zinc-100 rounded-md">
                                     {eachLetter}
                                 </div>
                             )

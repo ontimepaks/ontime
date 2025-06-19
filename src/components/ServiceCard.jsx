@@ -182,11 +182,23 @@ const ServiceCard = ({ servicedata }) => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
   return (
-    <div className='h-max w-56 hover:scale-105 transition-all duration-700 p-2 rounded-lg border-2 border-zinc-300 shadow-md shadow-zinc-600 text-center '>
+    <div className='h-max w-52 hover:scale-105 transition-all duration-700 p-2 py-2 rounded-xl border-2 border-zinc-200  text-center '>
 
 
-      <div className="h-48  overflow-hidden flex justify-center items-center">
+      <div className="h-44  overflow-hidden flex justify-center items-center rounded-lg">
         <Image
           src={servicedata?.imgUrl ? servicedata?.imgUrl : blankUserImage}
           alt='service image'
@@ -196,8 +208,8 @@ const ServiceCard = ({ servicedata }) => {
         />
       </div>
 
-      <h3 className='font-bold text-xl mt-5'>{servicedata.name}</h3>
-      <p className='h-10 overflow-hidden font-normal text-sm mt-2 text-wrap'>{servicedata.desc}</p>
+      <h3 className='font-bold text-lg mt-5'>{servicedata.name}</h3>
+      <p className='h-10 overflow-hidden font-normal text-[13px] mt-2 text-wrap'>{servicedata.desc}</p>
 
 
       {/* the button  */}
@@ -206,7 +218,7 @@ const ServiceCard = ({ servicedata }) => {
           userRole == "user" ?
             <button
               onClick={() => { handleOrderNowButtonClick(servicedata) }}
-              className='h-max w-full hover:scale-105 transition-all duration-500 text-zinc-900 border-2 border-zinc-900 p-2 text-center rounded-full'>Order Now!</button>
+              className='h-max w-full hover:scale-105 transition-all duration-500 text-zinc-800 border-2 border-zinc-200 p-2 text-center rounded-full'>Order Now!</button>
 
             :
             <div className="flex gap-2">

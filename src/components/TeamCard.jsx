@@ -8,7 +8,7 @@ import axios from 'axios'
 
 
 
-const TeamCard = ({ teamdata }) => {
+const   TeamCard = ({ teamdata }) => {
 
   const [resource, setResource] = useState(null);
   const [memberDataLocal, setMemberDataLocal] = useState(null)
@@ -89,11 +89,33 @@ const TeamCard = ({ teamdata }) => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   return (
-    <div className='h-max w-max hover:scale-105 transition-all duration-700 p-3 rounded-lg border-2 border-zinc-300 shadow-md shadow-zinc-600 text-center '>
+    <div className='h-max w-max hover:scale-105 transition-all duration-700 p-2 rounded-xl border-2 border-zinc-100 shadow-sm shadow-zinc-600 text-center '>
 
 
-      <div className="h-48  overflow-hidden flex items-center justify-center">
+      <div className="h-48   overflow-hidden flex items-center justify-center rounded-lg">
         <Image
           src={teamdata?.imgUrl ? teamdata?.imgUrl : blankUserImage}
           alt='team member image'
@@ -104,7 +126,7 @@ const TeamCard = ({ teamdata }) => {
       </div>
 
       <h3 className='font-bold text-xl mt-5'>{teamdata.name}</h3>
-      <p className='font-normal text-md mt-2'>{teamdata.desc}</p>
+      <p className=' h-max w-52 font-normal text-[14px] text-wrap mt-2'>{teamdata.desc} lakjdlfkaj lakjdlfjk lkajsdf </p>
 
 
 
@@ -112,7 +134,7 @@ const TeamCard = ({ teamdata }) => {
         userRole == "user" ?
           <button
             onClick={() => { handleContactButtonClick() }}
-            className='h-max w-full mt-5 hover:scale-105 transition-all duration-500 text-zinc-900 border-2 border-zinc-900 p-2 text-center rounded-full'>Contact Now!</button>
+            className='h-max w-full mt-10 hover:scale-105 transition-all duration-500 text-zinc-900 border-2 border-zinc-300 p-2 text-center rounded-full'>Contact Now!</button>
 
           :
           <div className="flex gap-2 mt-5">

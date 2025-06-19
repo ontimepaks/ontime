@@ -125,10 +125,12 @@ const Home = () => {
 
 
   return (
-    <div className='min-h-screen w-screen overflow-x-hidden bg-zinc-200 '>
+    <div className='min-h-screen w-screen overflow-x-hidden bg-zinc-100 '>
+
 
 
       <UserNavbar />
+
 
 
 
@@ -155,7 +157,7 @@ const Home = () => {
       <Footer />
 
 
-      <TermsAndPolicies />
+      {/* <TermsAndPolicies /> */}
 
 
 

@@ -1,9 +1,14 @@
 import mongoose from "mongoose";
+import dns, { setDefaultResultOrder } from 'dns'
 
 
 
-// let mongodb_uri = "mongodb://localhost:27017"
-let mongodb_uri="mongodb+srv://ontimepaks:unK2IXidy8CKVBL1@cluster0.f4wzwti.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+
+setDefaultResultOrder("ipv4first")
+
+
+let mongodb_uri = "mongodb://localhost:27017"
+// let mongodb_uri = "mongodb+srv://ontimepaks:unK2IXidy8CKVBL1@cluster0.f4wzwti.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 let connection;
 let connectionPromise;
 
@@ -22,12 +27,15 @@ export default async function dbConnection() {
         if (connection) {
             return connection;
         }
-        
-        
-        
-        
+
+
+
+
         if (!connectionPromise) {
-            connectionPromise = await mongoose.connect(`${mongodb_uri}/ontime`);
+            connectionPromise = await mongoose.connect(`${mongodb_uri}`,{
+                dbName:"ontime",
+                serverSelectionTimeoutMS:30000
+            });
             connection = await connectionPromise;
 
 

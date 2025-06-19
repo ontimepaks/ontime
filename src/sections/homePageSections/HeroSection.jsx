@@ -1,7 +1,7 @@
 'use client';
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
-
+import heroBgImg from '../../../public/laptop2.jpg'
 
 
 
@@ -71,9 +71,9 @@ const HeroSection = () => {
 
 
 
-    useEffect(() => {
-        console.log(translateX)
-    }, [translateX])
+    // useEffect(() => {
+    //     console.log(translateX)
+    // }, [translateX])
 
 
 
@@ -82,74 +82,43 @@ const HeroSection = () => {
 
 
     return (
+
+
+
         <div
-            id='home'
-            className="h-max w-full relative mt-5  sm:h-max  overflow-hidden bg-zinc-50">
+        id='home'
+        className="h-[100vh] w-screen overflow-x-hidden relative">
 
 
-
-            <div className="">
-
-
-
-                {/* Controls (optional) */}
-                <button
-                    onClick={slideLeft}
-                    className="absolute left-2 top-1/2 z-10 px-2 text-zinc-100 text-4xl font-extrabold py-1 rounded"
-                >
-                    <i className="ri-arrow-left-s-line"></i>
-                </button>
-                <button
-                    onClick={slideRight}
-                    className="absolute right-2 top-1/2 z-10 text-zinc-100 text-4xl font-extrabold px-2 py-1 rounded"
-                >
-                    <i className="ri-arrow-right-s-line"></i>
-                </button>
-
-
-
-
-
-
-                {/* Track (width = 2 slides = 200vw) */}
-                <div
-                    className="w-full flex transition-transform duration-500 ease-in-out"
-                    style={{ transform: `translateX(-${translateX}%)` }}
-                >
-
-
-                    {
-                        ImageUrl.map((eachImageUrl, index) => {
-                            return (
-                                <div
-                                    key={index}
-                                    className=" w-full relative  flex-shrink-0">
-                                    <Image
-                                        src={eachImageUrl}
-                                        alt="Hero image 2"
-                                        // layout="fill"
-                                        height={700}
-                                        width={2000}
-                                        // objectFit="cover"
-                                        className='object-cover '
-                                    />
-                                </div>
-                            )
-                        })
-                    }
-
-
-
-                </div>
-
-                
-
+            {/* background image */}
+            <div className="absolute h-full w-full top-0 right-0 backdrop-blur-sm ">
+                <Image
+                    src={heroBgImg}
+                    alt='Image of hero section'
+                    className='h-full w-full object-center '
+                />
             </div>
 
+            {/* Just for the blur on the image */}
+            <div className="absolute h-full w-full top-0 right-0 backdrop-blur-sm z-10"></div>
 
 
+
+            {/* real container of the image */}
+            <div className="absolute text-center w-[70%] mt-32 top-1/3 right-1/2 -translate-y-1/2 translate-x-1/2 backdrop-blur-2xl z-20 p-5  md:p-10 rounded-xl border-zinc-200 border-2  text-zinc-100  ">
+                <h1 className='text-xl  sm:text-4xl font-extrabold mb-5'>Your Complete Digital & Print Partner</h1>
+                <p className='text-sm sm:text-lg'>At Ontime Printers—based at Parasram Building, Pakistan Chowk, Karachi—we blend 25+ years of global experience with a one-stop suite of print, digital, and tech solutions. From high-end web and e‑commerce development to expert consulting and hands‑on training, plus full-scale digital and offset printing, we empower brands to stand out. Flexible, fast, and future‑focused.
+                </p>
+            </div>
 
         </div>
+
+
+
+
+
+        // At Ontime Printers—based at Parasram Building, Pakistan Chowk, Karachi—we blend 25+ years of global experience with a one-stop suite of print, digital, and tech solutions. From high-end web and e‑commerce development to expert consulting and hands‑on training, plus full-scale digital and offset printing, we empower brands to stand out. Flexible, fast, and future‑focused.
+
     )
 }
 

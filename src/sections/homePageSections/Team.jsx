@@ -1,12 +1,21 @@
 import ServiceCard from '@/components/ServiceCard'
 import TeamCard from '@/components/TeamCard'
 import { MyContext } from '@/context/context'
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useRef } from 'react'
+
+
+
+
+
+
+
+
+
 
 const Team = () => {
 
 
-
+    let teamRef=useRef()
     let {
         allMembersData
     }= useContext(MyContext)
@@ -61,6 +70,26 @@ const Team = () => {
 
 
 
+    useEffect(()=>{
+        let container= teamRef.current;
+        if(!container){
+            return ;
+        }
+
+        function onWheelFunc(e){
+            e.preventDefault()
+            container.scrollLeft+=e.deltaY;
+        }
+
+        container.addEventListener("wheel",onWheelFunc)
+
+        return ()=>{
+            container.removeEventListener("wheel", onWheelFunc)
+        }
+
+    },[])
+
+
 
 
 
@@ -80,7 +109,9 @@ const Team = () => {
 
 
 
-            <div className="h-max w-full flex justify-center flex-wrap gap-5 mt-10">
+            <div 
+            // ref={teamRef}
+            className="h-max w-full flex flex-wrap   justify-center  gap-5 mt-10">
                 {
                     allMembersData?.map((eachMember, index) => {
                         return (
