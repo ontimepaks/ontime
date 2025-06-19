@@ -236,7 +236,7 @@ const UserNavbar = () => {
 
             {/* this is the small screen nav which only visible when the screen is small */}
             {
-                window.innerWidth <= 650 && smallScreenNavVisibility ?
+                screenWidth <= 650 && smallScreenNavVisibility ?
                     <div className="w-full mt-5 absolute top-20 backdrop-blur-md p-5">
                         {
                             navArray.map((eachNav, index) => {
