@@ -7,8 +7,8 @@ import dns, { setDefaultResultOrder } from 'dns'
 setDefaultResultOrder("ipv4first")
 
 
-let mongodb_uri = "mongodb://localhost:27017"
-// let mongodb_uri = "mongodb+srv://ontimepaks:unK2IXidy8CKVBL1@cluster0.f4wzwti.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+// let mongodb_uri = "mongodb://localhost:27017"
+let mongodb_uri = "mongodb+srv://ontimepaks:unK2IXidy8CKVBL1@cluster0.f4wzwti.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 let connection;
 let connectionPromise;
 
