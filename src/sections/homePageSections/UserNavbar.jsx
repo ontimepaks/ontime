@@ -1,3 +1,4 @@
+'use client';
 import { MyContext } from '@/context/context'
 import { usePathname, useRouter } from 'next/navigation'
 import React, { useContext, useEffect, useState } from 'react'
