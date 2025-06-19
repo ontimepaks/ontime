@@ -1,3 +1,4 @@
+"use client";
 import { MyContext } from '@/context/context'
 import axios from 'axios'
 import React, { useContext } from 'react'
