@@ -54,7 +54,7 @@ export async function POST(request) {
 
         const { data, error } = await resend.emails.send({
             from: 'Ontime Website Contact <onboarding@resend.dev>',
-            to: 'ibrahim.dev901@gmail.com',
+            to: 'ontimepaks@gmail.com',
             subject: 'Contact from ontime website',
             html: html,
         });
