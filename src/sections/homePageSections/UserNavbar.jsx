@@ -112,6 +112,8 @@ const UserNavbar = () => {
                         height={90}
                         alt='logo'
                         className='h-14 object-cover'
+                        onClick={() => { document.getElementById("home").scrollIntoView({ behavior: 'smooth' }) }}
+
                     />
                 </div>
 

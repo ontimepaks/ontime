@@ -110,8 +110,8 @@ const Services = () => {
 
 
             <div 
-            ref={containerRef}
-            className="h-max w-full flex justify-start  gap-2 px-10 mt-5 overflow-x-hidden py-10">
+            // ref={containerRef}
+            className="h-max w-full flex flex-wrap justify-center  gap-2 px-10 mt-5 overflow-x-hidden py-10">
                 {
                     allServicesData?.map((eachService, index) => {
                         if (servicesFilterVal == "All" || eachService?.catag == servicesFilterVal) {
